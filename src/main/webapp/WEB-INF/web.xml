@@ -1,0 +1,88 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>HelloWorldServlet</servlet-name>
+		<display-name>HelloWorldServlet</display-name>
+		<description></description>
+		<servlet-class>servlets.HelloWorldServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CreateUser</servlet-name>
+		<display-name>CreateUser</display-name>
+		<description></description>
+		<servlet-class>servlets.users.CreateUser</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateUser</servlet-name>
+		<display-name>UpdateUser</display-name>
+		<description></description>
+		<servlet-class>servlets.users.UpdateUser</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteUser</servlet-name>
+		<display-name>DeleteUser</display-name>
+		<description></description>
+		<servlet-class>servlets.users.DeleteUser</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CreateTour</servlet-name>
+		<display-name>CreateTour</display-name>
+		<description></description>
+		<servlet-class>servlets.tours.CreateTour</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateTour</servlet-name>
+		<display-name>UpdateTour</display-name>
+		<description></description>
+		<servlet-class>servlets.tours.UpdateTour</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CreateOrder</servlet-name>
+		<display-name>CreateOrder</display-name>
+		<description></description>
+		<servlet-class>servlets.orders.CreateOrder</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateOrder</servlet-name>
+		<display-name>UpdateOrder</display-name>
+		<description></description>
+		<servlet-class>servlets.orders.UpdateOrder</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloWorldServlet</servlet-name>
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreateUser</servlet-name>
+		<url-pattern>/adminpanel/create/user</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateUser</servlet-name>
+		<url-pattern>/profile/edit</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteUser</servlet-name>
+		<url-pattern>/profile/delete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreateTour</servlet-name>
+		<url-pattern>/adminpanel/create/tour</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateTour</servlet-name>
+		<url-pattern>/adminpanel/update/tour</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreateOrder</servlet-name>
+		<url-pattern>/profile/create/order</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateOrder</servlet-name>
+		<url-pattern>/profile/update/order</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
