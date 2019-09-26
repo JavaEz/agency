@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"  href="css/hello.css">
+</head>
+<body>
+<form>
+      <div>
+
+        <p>
+          <label for="name">Имя</label>
+          <input type="text" name="name" id="name" required pattern="[А-Я][а-я]+" placeholder="Василий"><span></span>
+        </p>
+
+        <p>
+          <label for="second_name">Фамилия</label>
+          <input type="text" name="name" id="second_name" required pattern="[А-Я][а-я]+" placeholder="Васильев"><span></span>
+        </p>
+
+        <p>
+          <label for="sity">Город</label>
+          <input type="text" name="name" id="sity" required pattern="[А-Я][а-я]+" placeholder="Киев"><span></span>
+        </p>
+
+        <p>
+          <label for="Email">Эл. почта</label>
+          <input type="Email" name="name" id="Email" required placeholder="example@post.com"><span></span>
+        </p>
+
+        <p>
+          <label for="Password">Пароль</label>
+          <input type="password" name="name" id="Password" required placeholder="от 4 до 10 символов" minlength="4" maxlength="10"><span></span>
+        </p>
+        <p>
+          <label for="Password1">Повторите</label>
+          <input type="password" name="name" id="Password1" required placeholder="от 4 до 10 символов" minlength="4" maxlength="10"><span></span>
+        </p>
+
+        <p>
+          <label for="captcha">Введите число с картинки</label><br><br>
+          <span>2589</span><input type="text" name="name" id="captcha" pattern="2589" required><span></span>
+        </p>
+
+      </div>
+      <footer>
+        <button type="submit">Зарегистрироваться</button>
+      </footer>
+    </form>
+</body>
+</html>

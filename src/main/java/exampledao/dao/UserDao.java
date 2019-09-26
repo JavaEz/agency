@@ -16,5 +16,9 @@ public interface UserDao {
 	boolean updateUser(int userId, String username, String password, String email, String birthday, int roleId);
 
 	List<UserData> getAllUsers();
+	
+	UserData getUserByEmail(String email);
+	
+	UserData getUserByOrderId(int orderId);
 
 }

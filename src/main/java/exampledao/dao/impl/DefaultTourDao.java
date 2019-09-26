@@ -23,6 +23,7 @@ public class DefaultTourDao implements TourDao {
 	private final static String SELECT_TOUR_BY_PERIOD = "SELECT * FROM tours WHERE start >= ? AND end <= ?";
 	private final static String SELECT_ALL_TOURS = "SELECT * FROM tours";
 	private final static String ORDER_TOUR = "INSERT INTO orders_tours (order_id, tour_id) VALUES(?, ?);";
+	private final static String DELETE_ORDERED_TOUR = "DELETE FROM orders_tours WHERE order_id =?";
 	
 	private static DefaultTourDao instance;
 
@@ -155,6 +156,19 @@ public class DefaultTourDao implements TourDao {
 				PreparedStatement statement = conn.prepareStatement(ORDER_TOUR);) {
 			statement.setInt(1, orderId);
 			statement.setInt(2, tourId);
+
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean deleteOrderedTour(int orderId) {
+		try (Connection conn = baseconn.getConnection();
+				PreparedStatement statement = conn.prepareStatement(ORDER_TOUR);) {
+			statement.setInt(1, orderId);
 
 			statement.executeUpdate();
 		} catch (SQLException e) {

@@ -1,30 +1,29 @@
 package exampledao.someanothermethods;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class DateTimeConverter {
 
-	// Function tot convert String to Date 
-    public static LocalDate getDateFromString(String string) 
-    { 
-    	 DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");  
-        // Convert the String to Date in the specified format 
-        LocalDate date = LocalDate.parse(string, format); 
-  
-        // return the converted date 
-        return date; 
-    } 
-    
-    public static Date toSqlDate (String string) {
-    	
-    	 DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
-    	
-    	 java.sql.Date sqlDate = java.sql.Date.valueOf(LocalDate.parse(string, format));
-    			 
-    			 return sqlDate;
-    	
-    }
-	
+	LocalDate date = LocalDate.now();
+
+	public static LocalDate stringToDate(String date) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return LocalDate.parse(date, formatter);
+	}
+
+	public static java.sql.Date toSqlDate(String date) {
+
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		java.sql.Date sqlDate = java.sql.Date.valueOf(LocalDate.parse(date, format));
+		return sqlDate;
+
+	}
+	public static long daysDifference(String start, String end) {
+		LocalDate parsedStart =  DateTimeConverter.stringToDate(start);
+		LocalDate parsedend =  DateTimeConverter.stringToDate(end);
+		long daysBetween = ChronoUnit.DAYS.between(parsedStart, parsedend);
+		return daysBetween;
+	}
 }

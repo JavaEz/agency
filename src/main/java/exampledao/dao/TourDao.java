@@ -19,4 +19,6 @@ public interface TourDao {
 	boolean deleteTour(int tourId);
 	
 	boolean orderTour(int orderId, int tourId);
+	
+	boolean deleteOrderedTour(int orderId);
 }
