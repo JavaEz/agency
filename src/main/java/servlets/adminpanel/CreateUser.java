@@ -1,4 +1,4 @@
-package servlets.users;
+package servlets.adminpanel;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

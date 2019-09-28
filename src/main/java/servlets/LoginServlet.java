@@ -1,8 +1,7 @@
-  package servlets;
+package servlets;
 
 import java.io.IOException;
 import java.util.List;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,23 +32,27 @@ public class LoginServlet extends HttpServlet {
 
 		UserDao userDao = DefaultUserDao.getUserDaoInstance();
 		UserData user = userDao.getUserByEmail(email);
-		 
-		
 
-		if (user!= null && user.getPassword().equals(password)) {
+		if (user != null && user.getPassword().equals(password)) {
 			UserData userData = new UserData();
-			userData.setRole(1);
+			//userData.setRole(1);
 			HttpSession session = request.getSession();
 			session.setAttribute("UserEmail", email);
-			session.setAttribute("loggedInUser",userData);
-			response.sendRedirect(getServletContext().getContextPath() + "/myaccount");
-		}else {
+			session.setAttribute("loggedInUser", userData);
+			whoIsWho(response, user);
+			 //response.sendRedirect(getServletContext().getContextPath() + "/myaccount");
+		} else {
 			request.setAttribute("errMessage", "incorrect email");
 			request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
 		}
 	}
-	 
-	
-	
+
+	private void whoIsWho(HttpServletResponse response, UserData user) throws IOException {
+		if (user.getRole() == 1) {
+			response.sendRedirect(getServletContext().getContextPath() + "/adminpanel");
+		} else {
+			response.sendRedirect(getServletContext().getContextPath() + "/myaccount");
+		}
+	}
 
 }

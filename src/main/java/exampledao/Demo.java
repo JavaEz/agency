@@ -19,11 +19,11 @@ import exampledao.models.UserData;
 public class Demo {
 	public static void main(String[] args) {
 
-		//UserDao userDao =  DefaultUserDao.getUserDaoInstance();
+		UserDao userDao =  DefaultUserDao.getUserDaoInstance();
 		//UserData userData = userDao.getUserById(2);
 		//List<UserData> userData2 = userDao.getAllUsers();
 		// userDao.createUser("Seriy23", "pisya", "toha@lds.net", "1990-03-02", 0);
-		 //userDao.createUser("Tomas", "Gigila", "mirkos@lds.net", "12/02/1929", 2);
+		 userDao.createUser("Tomas", "Gigila", "mirkos@lds.net", "12/02/1999", 2);
 		//userDao.updateUser(8, "toma2", "ppx", "tmgh", "08/12/2000", 0);
 		 //userDao.deleteUser(8);
 		//UserData userData2 = userDao.getUserByEmail("toha@lds.net");
@@ -52,8 +52,8 @@ public class Demo {
 		//FlightDao flightDao = new DefaultFlightDao();
 //		flightDao.createFlight("12/12/1990", "lviv", "kiev", 35);
 		
-		OrderDao orderDao = DefaultOrderDao.getOrderDaoInstance();
-		orderDao.getOrderById(2);
+		//OrderDao orderDao = DefaultOrderDao.getOrderDaoInstance();
+		//orderDao.getOrderById(2);
 		//System.out.println(orderDao.getOrderById(2));
 		//flightDao.orderFlight(2, 1);
 		//Order order = new Order(null);

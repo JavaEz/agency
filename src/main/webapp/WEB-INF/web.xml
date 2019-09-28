@@ -3,6 +3,17 @@
 xmlns="http://java.sun.com/xml/ns/javaee" 
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
 	<display-name>Archetype Created Web Application</display-name>
+	<filter>
+		<description>
+		</description>
+		<display-name> adminpanel/*</display-name>
+		<filter-name> adminpanel/*</filter-name>
+		<filter-class>filters.AdminFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name> adminpanel/*</filter-name>
+		<url-pattern>/adminpanel/*</url-pattern>
+	</filter-mapping>
 	<servlet>
 		<servlet-name>HelloWorldServlet</servlet-name>
 		<servlet-class>servlets.HelloWorldServlet</servlet-class>
@@ -47,6 +58,20 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		<servlet-name>MyAccountServlet</servlet-name>
 		<servlet-class>servlets.MyAccountServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>LogoutServlet</display-name>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>servlets.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>AdminPanel</display-name>
+		<servlet-name>AdminPanel</servlet-name>
+		<servlet-class>servlets.adminpanel.AdminPanel</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>HelloWorldServlet</servlet-name>
 		<url-pattern>/hello</url-pattern>
@@ -90,6 +115,14 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 	<servlet-mapping>
 		<servlet-name>MyAccountServlet</servlet-name>
 		<url-pattern>/myaccount</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminPanel</servlet-name>
+		<url-pattern>/adminpanel</url-pattern>
 	</servlet-mapping>
 	
 </web-app>

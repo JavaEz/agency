@@ -16,11 +16,8 @@
 		<ul>
 			<li><a href="${pageContext.servletContext.contextPath}/logout">Logout</a></li>
 		</ul>
-		<ul>
-			<li><a href="${pageContext.servletContext.contextPath}/adminpanel">Admin</a></li>
-		</ul>
+		<li><a href="${pageContext.servletContext.contextPath}/adminpanel"></a></li>
 		
-
 	</header>
 	<p>${loggedInUser.role == 1}</p>
 

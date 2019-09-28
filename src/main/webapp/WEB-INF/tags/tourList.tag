@@ -12,7 +12,7 @@
 				<c:if test="${loggedInUser.role == 1}">
 					<td>
 						<form action="UpdateTour" method="GET">
-							<div style="padding: 2px; margin: 2px; align-items: center" >
+							<div style="padding: 2px; margin: 2px" >
 								<input type="submit" value="EDIT" />
 							</div>
 						</form>

@@ -1,4 +1,4 @@
-package servlets.tours;
+package servlets.adminpanel;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
