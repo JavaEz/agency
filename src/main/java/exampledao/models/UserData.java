@@ -1,6 +1,7 @@
 package exampledao.models;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserData {
 	private int userId;
@@ -9,8 +10,9 @@ public class UserData {
 	private String email;
 	private Date birthday;
 	private int role;
+	private List<Order> orders;
 
-	public UserData(int user_id, String username, String password, String email, Date birthday, int role) {
+	public UserData(int id, String username, String password, String email, Date birthday, int role) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -18,6 +20,17 @@ public class UserData {
 		this.email = email;
 		this.birthday = birthday;
 		this.role = role;
+	}
+	
+	public UserData(int id, String username, String password, String email, Date birthday, int role, List<Order> orders) {
+		super();
+		this.userId = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.birthday = birthday;
+		this.role = role;
+		this.orders = orders;
 	}
 
 	public UserData() {
@@ -70,6 +83,14 @@ public class UserData {
 
 	public void setRole(int role) {
 		this.role = role;
+	}
+	
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	@Override

@@ -23,9 +23,11 @@ public class DefaultUserDao implements UserDao {
 	private static final String DELETE_USER = "DELETE FROM users WHERE user_id = ?";
 	private static final String UPDATE_USER = "UPDATE users SET username = ?, password = ?, email = ?, birthday = ?, role_id = ? WHERE user_id = ?";
 	private static final String SELECT_ALL_USER = "SELECT * FROM users";
+	public static final String SELECT_USER_BY_EMAIL_PREPARED = "SELECT * FROM users WHERE email = ?";
+	private final static String SELECT_USER_BY_ORDER_ID = "SELECT u.user_id, u.username, u.password, u.email, u.birthday, u.role_id FROM orders o INNER JOIN users u WHERE o.user_id = ?;";
 
 	private static DefaultUserDao instance;
-	
+
 	private DefaultUserDao() {
 
 	}
@@ -51,12 +53,12 @@ public class DefaultUserDao implements UserDao {
 	}
 
 	public static synchronized DefaultUserDao getUserDaoInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new DefaultUserDao();
 		}
 		return instance;
 	}
-	
+
 	@Override
 	public boolean createUser(String username, String password, String email, String birthday, int roleId) {
 		try (Connection conn = baseconn.getConnection();
@@ -84,7 +86,7 @@ public class DefaultUserDao implements UserDao {
 
 			statement.setInt(1, userId);
 			statement.executeUpdate();
-			//return true;
+			// return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -141,4 +143,41 @@ public class DefaultUserDao implements UserDao {
 		return user;
 	}
 
+	@Override
+	public UserData getUserByEmail(String email) {
+		UserData userData = null;
+		try (Connection conn = baseconn.getConnection();
+				PreparedStatement statement = conn.prepareStatement(SELECT_USER_BY_EMAIL_PREPARED);) {
+			statement.setString(1, email);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				userData = new UserData(rs.getInt("user_id"), rs.getString("username"), rs.getString("password"),
+						rs.getString("email"), rs.getDate("birthday"), rs.getInt("role_id"));
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return userData;
+	}
+
+	@Override
+	public UserData getUserByOrderId(int orderId) {
+		UserData userData = null;
+		try (Connection conn = baseconn.getConnection();
+				PreparedStatement statement = conn.prepareStatement(SELECT_USER_BY_ORDER_ID);) {
+			statement.setInt(1, orderId);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				userData = new UserData(rs.getInt("user_id"), rs.getString("username"), rs.getString("password"),
+						rs.getString("email"), rs.getDate("birthday"), rs.getInt("role_id"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return userData;
+	}
 }

@@ -108,8 +108,16 @@ public class DefaultFlightDao implements FlightDao {
 
 	@Override
 	public boolean orderFlight(Integer orderId, int flightId) {
-		// TODO Auto-generated method stub
-		return false;
+		try (Connection conn = baseconn.getConnection();
+				PreparedStatement statement = conn.prepareStatement(ORDER_FLIGHT);) {
+			statement.setInt(1, orderId);
+			statement.setInt(2, flightId);
+
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 
 	private static Flight getFlightFromDb(ResultSet rs) throws SQLException {
